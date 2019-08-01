@@ -1,0 +1,45 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "sku_name": {
+            "type": "string"
+        },
+        "sku_units": {
+            "type": "string"
+        },
+        "d2c_partitions": {
+            "type": "string"
+        },
+        "features": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-03-22-preview",
+            "type": "Microsoft.Devices/IotHubs",
+            "name": "[parameters('name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "eventHubEndpoints": {
+                    "events": {
+                        "retentionTimeInDays": 1,
+                        "partitionCount": "[parameters('d2c_partitions')]"
+                    }
+                },
+                "features": "[parameters('features')]"
+            },
+            "sku": {
+                "name": "[parameters('sku_name')]",
+                "capacity": "[parameters('sku_units')]"
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "value": "azure-iot-powermon-hub"
+        },
+        "location": {
+            "value": "australiasoutheast"
+        },
+        "sku_name": {
+            "value": "S1"
+        },
+        "sku_units": {
+            "value": "1"
+        },
+        "d2c_partitions": {
+            "value": "4"
+        },
+        "features": {
+            "value": "None"
+        }
+    }
+}
