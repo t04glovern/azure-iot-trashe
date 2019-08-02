@@ -9,7 +9,7 @@
             "minDockerVersion": "v1.25",
             "loggingOptions": "",
             "registryCredentials": {
-              "garage": {
+              "glover": {
                 "username": "glover",
                 "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 "address": "glover.azurecr.io"
