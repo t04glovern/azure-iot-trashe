@@ -309,7 +309,7 @@ You need to add credentials for the repository to auth. Change this in `config/d
 
 ```json
 "registryCredentials": {
-    "garage": {
+    "glover": {
         "username": "glover",
         "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "address": "glover.azurecr.io"
