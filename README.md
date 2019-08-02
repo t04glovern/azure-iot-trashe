@@ -298,14 +298,21 @@ Alternatively run the following substituting in the correct information
 docker build  --rm -f ./blinker/Dockerfile.arm32v7 -t glover.azurecr.io/blinkler:0.0.1-arm32v7 ./blinker && docker push glover.azurecr.io/blinkler:0.0.1-arm32v7
 ```
 
+Get your credentials for your repository
+
+```bash
+az acr update --name "glover" --admin-enabled true
+az acr credential show --name "glover"
+```
+
 You need to add credentials for the repository to auth. Change this in `config/deployment.json`
 
 ```json
 "registryCredentials": {
     "garage": {
-    "username": "glover",
-    "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "address": "glover.azurecr.io"
+        "username": "glover",
+        "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "address": "glover.azurecr.io"
     }
 }
 ```
