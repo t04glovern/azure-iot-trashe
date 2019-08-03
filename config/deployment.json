@@ -44,6 +44,21 @@
               "image": "glover.azurecr.io/blinkler:0.0.1-arm32v7",
               "createOptions": "{\"HostConfig\":{\"Privileged\": true}}"
             }
+          },
+          "camera-capture": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "env": {
+              "VIDEO_PATH": {"value": "0"},
+              "RESIZE_WIDTH":  {"value": "352"},
+              "RESIZE_HEIGHT":  {"value": "288"},
+              "SHOW_VIDEO":  {"value": "True"}
+            },
+            "settings": {
+              "image": "glover.azurecr.io/camera-capture:0.0.1-arm32v7",
+              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5012\/tcp\":[{\"HostPort\":\"5012\"}]},\"Binds\":[\"\/dev\/video0:\/dev\/video0\"],\"Devices\":[{\"PathOnHost\":\"\/dev\/video0\",\"PathInContainer\":\"\/dev\/video0\",\"CgroupPermissions\":\"mrw\"}]}}"
+            }
           }
         }
       }

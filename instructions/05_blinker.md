@@ -1,6 +1,8 @@
 # Blinker Module Deploy
 
-Update the code in [blinker/module.json](blinker/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run deploy.
+Update the code in [blinker/module.json](blinker/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
+
+![Push Edge 1](img/azure-edge-push-01.png)
 
 Alternatively run the following substituting in the correct information
 
@@ -19,14 +21,28 @@ You need to add credentials for the repository to auth. Change this in `config/d
 
 ```json
 "registryCredentials": {
-    "glover": {
-        "username": "glover",
-        "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        "address": "glover.azurecr.io"
-    }
+  "glover": {
+    "username": "glover",
+    "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "address": "glover.azurecr.io"
+  }
 }
 ```
 
-Once pushed to ACR, you can update the deployment to the Raspberry Pi.
+Once pushed to ACR, you can update the deployment to the Raspberry Pi. This is also done within the `config/deployment.json` file
 
-![Push Edge 1](img/azure-edge-push-01.png)
+```json
+"modules": {
+  "blinkled": {
+    "type": "docker",
+    "status": "running",
+    "restartPolicy": "always",
+    "settings": {
+      "image": "glover.azurecr.io/blinkler:0.0.1-arm32v7",
+      "createOptions": "{\"HostConfig\":{\"Privileged\": true}}"
+    }
+  }
+}
+```
+
+![Push Edge 2](img/azure-edge-push-02.png)

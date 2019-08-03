@@ -7,6 +7,8 @@
 * [03 - Azure IoT Hub / Device Setup](instructions/03_azure_iot.md)
 * [04 - Azure Container Registry Creation](instructions/04_container_registry.md)
 * [05 - Blinker Module Deploy](instructions/05_blinker.md)
+* [06 - USB Camera Setup](instructions/06_usb_camera.md)
+* [07 - Camera Capture Module Deploy](instructions/07_camera_capture.md)
 
 ## Attribution
 
