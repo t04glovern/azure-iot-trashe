@@ -4,7 +4,7 @@ Similar to the Blinker module we will now deploy a Camera Capture module for the
 
 ## Build & Push Container
 
-Update the code in [camera-capture/module.json](camera-capture/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
+Update the code in [modules/camera-capture/module.json](modules/camera-capture/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
 
 Alternatively run the following substituting in the correct information
 

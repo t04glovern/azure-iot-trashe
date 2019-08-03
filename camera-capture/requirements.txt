@@ -1,6 +1,0 @@
-azure-iothub-device-client
-numpy
-opencv-contrib-python
-requests
-trollius
-tornado==4.5.3

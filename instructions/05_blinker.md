@@ -1,6 +1,6 @@
 # Blinker Module Deploy
 
-Update the code in [blinker/module.json](blinker/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
+Update the code in [modules/blinker/module.json](modules/blinker/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
 
 ![Push Edge 1](img/azure-edge-push-01.png)
 
