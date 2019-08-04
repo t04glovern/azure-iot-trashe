@@ -9,7 +9,7 @@ import time
 
 import iothub_client
 # pylint: disable=E0611
-# Disabling linting that is not supported by Pylint for C extensions such as iothub_client. See issue https://github.com/PyCQA/pylint/issues/1955 
+# Disabling linting that is not supported by Pylint for C extensions such as iothub_client. See issue https://github.com/PyCQA/pylint/issues/1955
 from iothub_client import (IoTHubModuleClient, IoTHubClientError, IoTHubError,
                            IoTHubMessage, IoTHubMessageDispositionResult,
                            IoTHubTransportProvider)
@@ -23,7 +23,7 @@ SEND_CALLBACKS = 0
 
 def send_to_Hub_callback(strMessage):
     message = IoTHubMessage(bytearray(strMessage, 'utf8'))
-    hubManager.send_event_to_output("output1", message, 0)
+    hubManager.send_event_to_output("output", message, 0)
 
 # Callback received when the message that we're forwarding is processed.
 def send_confirmation_callback(message, result, user_context):
@@ -60,8 +60,8 @@ class HubManager(object):
 def main(
         videoPath,
         imageProcessingEndpoint = "",
-        imageProcessingParams = "", 
-        showVideo = False, 
+        imageProcessingParams = "",
+        showVideo = False,
         verbose = False,
         loopVideo = True,
         convertToGray = False,
