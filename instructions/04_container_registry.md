@@ -1,5 +1,7 @@
 # Container Registry Create
 
+**NOTE**: The name of the registry used is hardcoded into `templates/container-registry/parameters.json`. Make sure to edit it before deploying if you are doing this in production
+
 ```bash
 cd templates/container-registry
 ./deploy.sh
@@ -7,13 +9,13 @@ cd templates/container-registry
 # Your subscription ID can be looked up with the CLI using: az account show --out json
 # Enter your subscription ID:
 XXXXXXX-XXXXXXXXXX-XXXXXXXXXXXX-XXXXXXXXXX
-# This script will look for an existing resource group, otherwise a new one will be created
-# You can create new resource groups with the CLI using: az group create
+
 # Enter a resource group name
-azure-iot-powermon
+azure-iot-trashe
+
 # Enter a name for this deployment:
-azure-iot-powermon-registry
-# If creating a *new* resource group, you need to set a location
+azure-iot-trashe-registry
+
 # You can lookup locations with the CLI using: az account list-locations
 # Enter resource group location:
 australiasoutheast
@@ -25,4 +27,14 @@ Login to docker
 
 ```bash
 az acr login --name "glover"
+```
+
+## Delete
+
+To delete the deployment, run the following
+
+```bash
+az group deployment delete \
+    --name "azure-iot-trashe-registry" \
+    --resource-group "azure-iot-trashe"
 ```

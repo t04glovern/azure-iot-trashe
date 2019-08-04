@@ -15,7 +15,7 @@ RUN apt-get update &&  apt-get install -y --no-install-recommends  \
 
 # Python dependencies
 RUN pip3 install --upgrade setuptools && pip3 install --upgrade pip
-RUN pip3 install pillow numpy==1.14.5 flask tensorflow
+RUN pip3 install --no-cache-dir pillow numpy==1.14.5 flask tensorflow
 
 # Add the application
 ADD app /app

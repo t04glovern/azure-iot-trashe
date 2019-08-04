@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
-            "value": "azure-iot-powermon-hub"
+            "value": "azure-iot-trashe-hub"
         },
         "location": {
             "value": "australiasoutheast"

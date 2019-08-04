@@ -9,13 +9,13 @@ cd templates/custom-vision
 # Your subscription ID can be looked up with the CLI using: az account show --out json
 # Enter your subscription ID:
 XXXXXXX-XXXXXXXXXX-XXXXXXXXXXXX-XXXXXXXXXX
-# This script will look for an existing resource group, otherwise a new one will be created
-# You can create new resource groups with the CLI using: az group create
+
 # Enter a resource group name
-azure-iot-powermon
+azure-iot-trashe
+
 # Enter a name for this deployment:
-azure-iot-powermon-vison
-# If creating a *new* resource group, you need to set a location
+azure-iot-trashe-vision
+
 # You can lookup locations with the CLI using: az account list-locations
 # Enter resource group location:
 australiasoutheast
@@ -38,3 +38,13 @@ Make use of [Trashnet](https://github.com/garythung/trashnet) to build a trash d
 Export the model along with the Dockerfile. Replace the `labels.txt` and `model.pb` in `modules/image-classifier`
 
 ![Custom Vision Setup 4](img/custom-vision-create-04.png)
+
+## Delete
+
+To delete the deployment, run the following
+
+```bash
+az group deployment delete \
+    --name "azure-iot-trashe-vision" \
+    --resource-group "azure-iot-trashe"
+```
