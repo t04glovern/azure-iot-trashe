@@ -44,6 +44,10 @@ Export the model along with the Dockerfile. Replace the `labels.txt` and `model.
 
 ![Custom Vision Setup 4](img/custom-vision-create-04.png)
 
+## Test Model
+
+![Custom Vision Model Test 1](img/custom-vision-trained-test-01.jpg)
+
 ## Delete
 
 To delete the deployment, run the following
