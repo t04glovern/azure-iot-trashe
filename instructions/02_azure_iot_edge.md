@@ -20,7 +20,7 @@ sudo apt-get install libssl1.0.2
 curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list && \
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/ && \
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/ && \
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 
 # Install IoT edge security daemon
 sudo apt-get update && \
