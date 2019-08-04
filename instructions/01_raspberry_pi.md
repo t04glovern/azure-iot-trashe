@@ -47,17 +47,8 @@ sudo apt-get upgrade -y
 
 ```bash
 sudo apt-get install -y python-smbus i2c-tools
+sudo raspi-config nonint do_i2c 0
 ```
-
-Enable I2C by going into raspi-config
-
-```bash
-sudo raspi-config
-```
-
-![I2C Setup 1](img/i2c-setup-01.png)
-
-![I2C Setup 2](img/i2c-setup-02.png)
 
 Reboot the Pi (`sudo reboot`), log back in and then run the following to test I2C
 
