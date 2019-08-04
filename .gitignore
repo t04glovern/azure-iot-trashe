@@ -1,3 +1,5 @@
 config/
 .env
 .vscode/
+__MACOSX/
+dataset-resized*

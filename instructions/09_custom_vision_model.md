@@ -31,11 +31,16 @@ Create a new project and model selecting the following settings
 
 Make use of [Trashnet](https://github.com/garythung/trashnet) to build a trash dataset
 
+```bash
+wget https://github.com/garythung/trashnet/raw/master/data/dataset-resized.zip
+unzip dataset-resized.zip
+```
+
 ![Custom Vision Setup 2](img/custom-vision-create-02.png)
 
 ![Custom Vision Setup 3](img/custom-vision-create-03.png)
 
-Export the model along with the Dockerfile. Replace the `labels.txt` and `model.pb` in `modules/image-classifier`
+Export the model along with the Dockerfile. Replace the `labels.txt` and `model.pb` in `modules/image-classifier/app`
 
 ![Custom Vision Setup 4](img/custom-vision-create-04.png)
 
