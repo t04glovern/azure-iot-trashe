@@ -20,6 +20,13 @@ app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
 def index():
     return 'CustomVision.ai model host harness'
 
+def get_highest_prediction(predictions):
+    highest = predictions[0]
+    for p in predictions:
+        if p['probability'] > highest['probability']:
+            highest = p
+    return highest
+
 # Like the CustomVision.ai Prediction service /image route handles either
 #     - octet-stream image file
 #     - a multipart/form-data with files in the imageData parameter
@@ -42,6 +49,10 @@ def predict_image_handler(project=None, publishedName=None):
 
         img = Image.open(imageData)
         results = predict.predict_image(img)
+        # get the most likely prediction
+        highest_prediction = get_highest_prediction(results['predictions'])
+        # replace list of all predictions with the highest one
+        results['predictions'] = highest_prediction
         return jsonify(results)
     except Exception as e:
         print('EXCEPTION:', str(e))
@@ -62,6 +73,10 @@ def predict_url_handler(project=None, publishedName=None):
     try:
         image_url = json.loads(request.get_data().decode('utf-8'))['url']
         results = predict.predict_url(image_url)
+        # get the most likely prediction
+        highest_prediction = get_highest_prediction(results['predictions'])
+        # replace list of all predictions with the highest one
+        results['predictions'] = highest_prediction
         return jsonify(results)
     except Exception as e:
         print('EXCEPTION:', str(e))

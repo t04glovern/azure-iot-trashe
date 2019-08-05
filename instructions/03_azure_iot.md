@@ -3,11 +3,13 @@
 ## Azure CLI Setup
 
 ```bash
-# MacOS
-brew update && brew install azure-cli
+pip install --upgrade azure-cli
 
-# Python Pip
-pip install azure-cli
+# NOT REQUIRED if you dont need local testing (likely to not work)
+# https://github.com/Azure/iotedgehubdev#installing
+sudo su
+pip3 install --upgrade iotedgehubdev
+iotedgehubdev setup -c "<connection-string>"
 ```
 
 Login to the CLI
