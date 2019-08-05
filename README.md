@@ -1,5 +1,7 @@
 # Trashè
 
+![Design](designs/Trashe.jpg)
+
 ## Setup
 
 * [01 - Raspberry Pi Installation](instructions/01_raspberry_pi.md)
