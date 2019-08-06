@@ -62,8 +62,7 @@
                   "VIDEO_PATH=0",
                   "IMAGE_PROCESSING_ENDPOINT=http://image-classifier:80/image",
                   "RESIZE_WIDTH=352",
-                  "RESIZE_HEIGHT=288",
-                  "SHOW_VIDEO=True"
+                  "RESIZE_HEIGHT=288"
                 ],
                 "HostConfig": {
                   "PortBindings": {

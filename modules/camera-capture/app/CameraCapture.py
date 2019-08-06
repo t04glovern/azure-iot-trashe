@@ -11,7 +11,7 @@ else:
     from cv2 import cv2
 # pylint: disable=E1101
 # pylint: disable=E0401
-# Disabling linting that is not supported by Pylint for C extensions such as OpenCV. See issue https://github.com/PyCQA/pylint/issues/1955 
+# Disabling linting that is not supported by Pylint for C extensions such as OpenCV. See issue https://github.com/PyCQA/pylint/issues/1955
 import numpy
 import requests
 import json
@@ -27,7 +27,7 @@ from ImageServer import ImageServer
 class CameraCapture(object):
 
     def __IsInt(self,string):
-        try: 
+        try:
             int(string)
             return True
         except ValueError:
@@ -37,8 +37,8 @@ class CameraCapture(object):
             self,
             videoPath,
             imageProcessingEndpoint = "",
-            imageProcessingParams = "", 
-            showVideo = False, 
+            imageProcessingParams = "",
+            showVideo = False,
             verbose = False,
             loopVideo = True,
             convertToGray = False,
@@ -55,7 +55,7 @@ class CameraCapture(object):
             self.isWebcam = False
         self.imageProcessingEndpoint = imageProcessingEndpoint
         if imageProcessingParams == "":
-            self.imageProcessingParams = "" 
+            self.imageProcessingParams = ""
         else:
             self.imageProcessingParams = json.loads(imageProcessingParams)
         self.showVideo = showVideo
@@ -87,7 +87,7 @@ class CameraCapture(object):
             print("   - Annotate: " + str(self.annotate))
             print("   - Send processing results to hub: " + str(self.sendToHubCallback is not None))
             print()
-        
+
         self.displayFrame = None
         if self.showVideo:
             self.imageServer = ImageServer(5012, self)
@@ -160,11 +160,11 @@ class CameraCapture(object):
                 print("Frame number: " + str(frameCounter))
                 print("Time to capture (+ straighten up) a frame: " + self.__displayTimeDifferenceInMs(time.time(), startCapture))
                 startPreProcessing = time.time()
-            
+
             #Loop video
-            if not self.isWebcam:             
+            if not self.isWebcam:
                 if frameCounter == self.capture.get(cv2.CAP_PROP_FRAME_COUNT):
-                    if self.loopVideo: 
+                    if self.loopVideo:
                         frameCounter = 0
                         self.capture.set(cv2.CAP_PROP_POS_FRAMES, 0)
                     else:
@@ -173,14 +173,14 @@ class CameraCapture(object):
             #Pre-process locally
             if self.nbOfPreprocessingSteps == 1 and self.convertToGray:
                 preprocessedFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            
+
             if self.nbOfPreprocessingSteps == 1 and (self.resizeWidth != 0 or self.resizeHeight != 0):
                 preprocessedFrame = cv2.resize(frame, (self.resizeWidth, self.resizeHeight))
 
             if self.nbOfPreprocessingSteps > 1:
                 preprocessedFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
                 preprocessedFrame = cv2.resize(preprocessedFrame, (self.resizeWidth,self.resizeHeight))
-            
+
             if self.verbose:
                 print("Time to pre-process a frame: " + self.__displayTimeDifferenceInMs(time.time(), startPreProcessing))
                 startEncodingForProcessing = time.time()
@@ -229,7 +229,7 @@ class CameraCapture(object):
                             self.__annotate(preprocessedFrame, response)
                         self.displayFrame = cv2.imencode('.jpg', preprocessedFrame)[1].tobytes()
                 except Exception as e:
-                    print("Could not display the video to a web browser.") 
+                    print("Could not display the video to a web browser.")
                     print('Excpetion -' + str(e))
                 if self.verbose:
                     if 'startDisplaying' in locals():
