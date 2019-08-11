@@ -9,13 +9,13 @@
             "value": "australiasoutheast"
         },
         "sku_name": {
-            "value": "S1"
+            "value": "F1"
         },
         "sku_units": {
             "value": "1"
         },
         "d2c_partitions": {
-            "value": "4"
+            "value": "2"
         },
         "features": {
             "value": "None"

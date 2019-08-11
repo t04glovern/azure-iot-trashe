@@ -9,7 +9,7 @@
             "value": "australiasoutheast"
         },
         "registrySku": {
-            "value": "Standard"
+            "value": "Basic"
         },
         "adminUserEnabled": {
             "value": true

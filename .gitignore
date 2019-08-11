@@ -3,3 +3,4 @@ config/
 .vscode/
 __MACOSX/
 dataset-resized*
+.venv/

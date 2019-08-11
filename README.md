@@ -13,7 +13,8 @@
 * [07 - Camera Capture Module Deploy](instructions/07_camera_capture.md)
 * [08 - Image Classifier Service](instructions/08_image_classifier_service.md)
 * [09 - Custom Vision Model](instructions/09_custom_vision_model.md)
-* [10 - IoT Routing](instructions/10_iot_routing.md)
+* [10 - Service Bus / Queue Setup](instructions/10_service_bus.md)
+* [11 - Queue Processing w/ Azure Function](instructions/11_queue_process.md)
 
 ## Attribution
 
