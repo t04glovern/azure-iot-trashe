@@ -64,7 +64,8 @@
                   "RESIZE_WIDTH=352",
                   "RESIZE_HEIGHT=288",
                   "SHOW_VIDEO=True",
-                  "ANNOTATE=False"
+                  "ANNOTATE=False",
+                  "VERBOSE=False"
                 ],
                 "HostConfig": {
                   "PortBindings": {

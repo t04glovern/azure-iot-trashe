@@ -95,7 +95,6 @@ class CameraCapture(object):
 
     def __annotate(self, frame, response):
         AnnotationParserInstance = AnnotationParser()
-        #TODO: Make the choice of the service configurable
         listOfRectanglesToDisplay = AnnotationParserInstance.getCV2RectanglesFromProcessingService1(response)
         for rectangle in listOfRectanglesToDisplay:
             cv2.rectangle(frame, (rectangle(0), rectangle(1)), (rectangle(2), rectangle(3)), (0,0,255),4)
@@ -106,7 +105,7 @@ class CameraCapture(object):
         try:
             response = requests.post(self.imageProcessingEndpoint, headers = headers, params = self.imageProcessingParams, data = frame)
         except Exception as e:
-            print('__sendFrameForProcessing Excpetion -' + str(e))
+            print('__sendFrameForProcessing Exception -' + str(e))
             return "[]"
 
         if self.verbose:
@@ -218,19 +217,17 @@ class CameraCapture(object):
                         if self.verbose and (perfForOneFrameInMs is not None):
                             cv2.putText(frame, "FPS " + str(round(1000/perfForOneFrameInMs, 2)),(10, 35),cv2.FONT_HERSHEY_SIMPLEX,1.0,(0,0,255), 2)
                         if self.annotate:
-                            #TODO: fix bug with annotate function
                             self.__annotate(frame, response)
                         self.displayFrame = cv2.imencode('.jpg', frame)[1].tobytes()
                     else:
                         if self.verbose and (perfForOneFrameInMs is not None):
                             cv2.putText(preprocessedFrame, "FPS " + str(round(1000/perfForOneFrameInMs, 2)),(10, 35),cv2.FONT_HERSHEY_SIMPLEX,1.0,(0,0,255), 2)
                         if self.annotate:
-                            #TODO: fix bug with annotate function
                             self.__annotate(preprocessedFrame, response)
                         self.displayFrame = cv2.imencode('.jpg', preprocessedFrame)[1].tobytes()
                 except Exception as e:
                     print("Could not display the video to a web browser.")
-                    print('Excpetion -' + str(e))
+                    print('__showVideo Exception -' + str(e))
                 if self.verbose:
                     if 'startDisplaying' in locals():
                         print("Time to display frame: " + self.__displayTimeDifferenceInMs(time.time(), startDisplaying))

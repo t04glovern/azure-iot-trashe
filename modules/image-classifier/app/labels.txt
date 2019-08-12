@@ -1,5 +1,14 @@
+aluminium foil
 cardboard
+cigarette
+crisp packet
 glass
-metal
-paper
-plastic
+glass container
+metal can
+metal lid
+paper misc
+plastic bag
+plastic bottle cap
+plastic container
+plastic misc
+plastic wrapper

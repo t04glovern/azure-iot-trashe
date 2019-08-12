@@ -1,19 +1,21 @@
+
 import json
 import os
 import io
+
+# Imports for the REST API
 from flask import Flask, request, jsonify
+
+# Imports for image procesing
 from PIL import Image
 
-from predict import Predict
-
-# import ptvsd
-# ptvsd.enable_attach(address = ('0.0.0.0', 5679))
+# Imports for prediction
+from predict import initialize, predict_image, predict_url
 
 app = Flask(__name__)
-predict = Predict()
 
 # 4MB Max image size limit
-app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024 
 
 # Default route just shows simple text
 @app.route('/')
@@ -28,7 +30,7 @@ def get_highest_prediction(predictions):
     return highest
 
 # Like the CustomVision.ai Prediction service /image route handles either
-#     - octet-stream image file
+#     - octet-stream image file 
 #     - a multipart/form-data with files in the imageData parameter
 @app.route('/image', methods=['POST'])
 @app.route('/<project>/image', methods=['POST'])
@@ -48,7 +50,7 @@ def predict_image_handler(project=None, publishedName=None):
             imageData = io.BytesIO(request.get_data())
 
         img = Image.open(imageData)
-        results = predict.predict_image(img)
+        results = predict_image(img)
         # get the most likely prediction
         highest_prediction = get_highest_prediction(results['predictions'])
         # replace list of all predictions with the highest one
@@ -61,7 +63,7 @@ def predict_image_handler(project=None, publishedName=None):
 
 # Like the CustomVision.ai Prediction service /url route handles url's
 # in the body of hte request of the form:
-#     { 'Url': '<http url>'}
+#     { 'Url': '<http url>'}  
 @app.route('/url', methods=['POST'])
 @app.route('/<project>/url', methods=['POST'])
 @app.route('/<project>/url/nostore', methods=['POST'])
@@ -72,7 +74,7 @@ def predict_image_handler(project=None, publishedName=None):
 def predict_url_handler(project=None, publishedName=None):
     try:
         image_url = json.loads(request.get_data().decode('utf-8'))['url']
-        results = predict.predict_url(image_url)
+        results = predict_url(image_url)
         # get the most likely prediction
         highest_prediction = get_highest_prediction(results['predictions'])
         # replace list of all predictions with the highest one
@@ -83,5 +85,8 @@ def predict_url_handler(project=None, publishedName=None):
         return 'Error processing image'
 
 if __name__ == '__main__':
+    # Load and intialize the model
+    initialize()
+
     # Run the server
     app.run(host='0.0.0.0', port=80)
