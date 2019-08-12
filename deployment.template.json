@@ -62,12 +62,14 @@
                   "VIDEO_PATH=0",
                   "IMAGE_PROCESSING_ENDPOINT=http://image-classifier:80/image",
                   "RESIZE_WIDTH=352",
-                  "RESIZE_HEIGHT=288"
+                  "RESIZE_HEIGHT=288",
+                  "SHOW_VIDEO=True",
+                  "ANNOTATE=False"
                 ],
                 "HostConfig": {
                   "PortBindings": {
-                    "5678/tcp": [{
-                      "HostPort": "5678"
+                    "5012/tcp": [{
+                      "HostPort": "5012"
                     }]
                   },
                   "Devices": [{
@@ -95,16 +97,10 @@
               "createOptions": {
                 "HostConfig": {
                   "PortBindings": {
-                    "5012/tcp": [{
-                      "HostPort": "5012"
+                    "5679/tcp": [{
+                      "HostPort": "5679"
                     }]
-                  },
-                  "Binds": ["/dev/video0:/dev/video0"],
-                  "Devices": [{
-                    "PathOnHost": "/dev/video0",
-                    "PathInContainer": "/dev/video0",
-                    "CgroupPermissions": "mrw"
-                  }]
+                  }
                 }
               }
             }
