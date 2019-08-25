@@ -1,8 +1,24 @@
 # Trashè
 
+Trashè is a SmartBin which aim to help you get better at recycling.
+
+Making use of Azure IoT Edge we're able to leverage our trash detection model to detect plastic, glass & metals in realtime.
+
+## Design
+
+---
+
 ![Design](designs/Trashe.jpg)
 
+## Architecture
+
+---
+
+![Architecture](designs/trashe.png)
+
 ## Setup
+
+---
 
 * [01 - Raspberry Pi Installation](instructions/01_raspberry_pi.md)
 * [02 - Azure IoT Edge Software Pre-requisites](instructions/02_azure_iot_edge.md)
@@ -17,6 +33,8 @@
 * [11 - Queue Processing w/ Azure Function](instructions/11_queue_process.md)
 
 ## Attribution
+
+---
 
 * [https://desertbot.io/blog/headless-raspberry-pi-3-bplus-ssh-wifi-setup](https://desertbot.io/blog/headless-raspberry-pi-3-bplus-ssh-wifi-setup)
 * [https://docs.microsoft.com/en-au/azure/iot-edge/how-to-install-iot-edge-linux#configure-the-security-daemon](https://docs.microsoft.com/en-au/azure/iot-edge/how-to-install-iot-edge-linux#configure-the-security-daemon)
