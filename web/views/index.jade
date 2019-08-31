@@ -1,0 +1,24 @@
+extends layout
+block content
+  h1 #{title}
+  br
+  table.table.table-striped.table-bordered
+    tr
+      td Name
+      td Category
+      td Date
+      td Complete
+    if (typeof trashe === "undefined")
+      tr
+        td
+    else
+      each item in trashe
+        tr
+          td #{item.name}
+          td #{item.category}
+          - var date  = new Date(item.date);
+          - var day   = date.getDate();
+          - var month = date.getMonth() + 1;
+          - var year  = date.getFullYear();
+          td #{month + "/" + day + "/" + year}
+    hr
