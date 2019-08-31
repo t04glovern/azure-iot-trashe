@@ -28,7 +28,7 @@ Retrieve the connection string that will be used to connect to CosmosDB
 *NOTE:* The account name was passed in as a parameter in [templates/cosmos-db/parameters.json](../templates/cosmos-db/parameters.json])
 
 ```bash
-# Get the connection string for MongoDB API account
+# Get the connection string for API account
 az cosmosdb list-connection-strings \
     --name "trashe" \
     --resource-group "azure-iot-trashe"

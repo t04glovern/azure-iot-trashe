@@ -31,6 +31,8 @@ Making use of Azure IoT Edge we're able to leverage our trash detection model to
 * [09 - Custom Vision Model](instructions/09_custom_vision_model.md)
 * [10 - Service Bus / Queue Setup](instructions/10_service_bus.md)
 * [11 - Queue Processing w/ Azure Function](instructions/11_queue_process.md)
+* [12 - CosmosDB Webapp](instructions/12_cosmos_db_webapp.md)
+* [13 - Queue Processing Revisited](instructions/13_queue_processing_revisited.md)
 
 ## Attribution
 
