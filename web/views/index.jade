@@ -1,24 +1,28 @@
 extends layout
 block content
-  h1 #{title}
+  h1 List of Violations
   br
   table.table.table-striped.table-bordered
     tr
-      td Name
+      td id
       td Category
+      td Probability
       td Date
-      td Complete
     if (typeof trashe === "undefined")
       tr
         td
     else
       each item in trashe
         tr
-          td #{item.name}
-          td #{item.category}
-          - var date  = new Date(item.date);
+          td #{item.id}
+          td #{item.prediction}
+          td #{item.probability}
+          - var date  = new Date(item.timestamp);
           - var day   = date.getDate();
           - var month = date.getMonth() + 1;
           - var year  = date.getFullYear();
-          td #{month + "/" + day + "/" + year}
+          - var hours = date.getHours();
+          - var min   = date.getMinutes();
+          - var sec   = date.getSeconds();
+          td #{month + "/" + day + "/" + year + " " + hours + ":" + min + ":" + sec}
     hr

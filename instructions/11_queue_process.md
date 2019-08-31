@@ -18,6 +18,7 @@ source .venv/bin/activate
 # Windows
 python -m venv .venv
 source .venv/Scripts/activate
+pip install azure
 ```
 
 ### Create the function
