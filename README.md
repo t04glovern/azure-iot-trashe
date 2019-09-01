@@ -8,13 +8,13 @@ Making use of Azure IoT Edge we're able to leverage our trash detection model to
 
 ---
 
-![Design](designs/Trashe.jpg)
+![Design](designs/trashe-bin-design.jpg)
 
 ## Architecture
 
 ---
 
-![Architecture](designs/trashe.png)
+![Architecture](designs/trashe-azure-architecture.png)
 
 ## Setup
 
