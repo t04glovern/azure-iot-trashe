@@ -45,6 +45,9 @@ trasheDao
   })
 
 app.get('/', (req, res, next) => trasheList.showTrashe(req, res).catch(next))
+app.post('/resolvetrashe', (req, res, next) =>
+  trasheList.resolveTrashe(req, res).catch(next)
+)
 app.set('view engine', 'jade')
 
 // catch 404 and forward to error handler

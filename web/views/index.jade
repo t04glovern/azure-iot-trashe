@@ -2,27 +2,35 @@ extends layout
 block content
   h1 List of Violations
   br
-  table.table.table-striped.table-bordered
-    tr
-      td id
-      td Category
-      td Probability
-      td Date
-    if (typeof trashe === "undefined")
+  form(action="/resolvetrashe", method="post")
+    table.table.table-striped.table-bordered
       tr
-        td
-    else
-      each item in trashe
+        td id
+        td Category
+        td Probability
+        td Date
+        td Resolved
+      if (typeof trashe === "undefined")
         tr
-          td #{item.id}
-          td #{item.prediction}
-          td #{item.probability}
-          - var date  = new Date(item.timestamp);
-          - var day   = date.getDate();
-          - var month = date.getMonth() + 1;
-          - var year  = date.getFullYear();
-          - var hours = date.getHours();
-          - var min   = date.getMinutes();
-          - var sec   = date.getSeconds();
-          td #{month + "/" + day + "/" + year + " " + hours + ":" + min + ":" + sec}
-    hr
+          td
+      else
+        each item in trashe
+          tr
+            td #{item.id}
+            td #{item.prediction}
+            td #{item.probability}
+            - var date  = new Date(item.timestamp);
+            - var day   = date.getDate();
+            - var month = date.getMonth() + 1;
+            - var year  = date.getFullYear();
+            - var hours = date.getHours();
+            - var min   = date.getMinutes();
+            - var sec   = date.getSeconds();
+            td #{month + "/" + day + "/" + year + " " + hours + ":" + min + ":" + sec}
+            td
+              if(item.resolved)
+                input(type="checkbox", name="#{item.id}", value="#{!item.resolved}", checked=item.resolved)
+              else
+                input(type="checkbox", name="#{item.id}", value="#{!item.resolved}", checked=item.resolved)
+    button.btn.btn-primary(type="submit") Update items
+  hr

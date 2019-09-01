@@ -2,15 +2,13 @@
 const CosmosClient = require('@azure/cosmos').CosmosClient
 const debug = require('debug')('trashe:trasheDao')
 
-// For simplicity we'll set a constant partition key
-const partitionKey = '0'
 class TrasheDao {
   /**
-  * Manages reading, from Cosmos DB
-  * @param {CosmosClient} cosmosClient
-  * @param {string} databaseId
-  * @param {string} containerId
-  */
+   * Manages reading, from Cosmos DB
+   * @param {CosmosClient} cosmosClient
+   * @param {string} databaseId
+   * @param {string} containerId
+   */
   constructor(cosmosClient, databaseId, containerId) {
     this.client = cosmosClient
     this.databaseId = databaseId
@@ -46,12 +44,18 @@ class TrasheDao {
     return resources
   }
 
-  async getItem(itemId) {
-    debug('Getting an item from the database')
+  async updateItem(itemId) {
+    debug('Update an item in the database')
+
     const {
-      resource
-    } = await this.container.item(itemId, partitionKey).read()
-    return resource
+      resource: replaced
+    } = await this.container
+      .item(itemId, undefined)
+      .replace({
+        'id': itemId,
+        'resolved': true
+      })
+    return replaced
   }
 }
 

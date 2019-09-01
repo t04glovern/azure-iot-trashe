@@ -39,7 +39,8 @@ def main(msg: func.ServiceBusMessage):
         'id': str(uuid.uuid1()),
         'timestamp': results['created'],
         'prediction': results['predictions']['tagName'],
-        'probability': results['predictions']['probability']
+        'probability': results['predictions']['probability'],
+        'resolved': 'false'
     }
     # Only post if higher then 50%
     if results['predictions']['probability'] > 0.5:

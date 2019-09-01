@@ -31,7 +31,8 @@ def main(msg: func.ServiceBusMessage):
         'id': str(uuid.uuid1()),
         'timestamp': results['created'],
         'prediction': results['predictions']['tagName'],
-        'probability': results['predictions']['probability']
+        'probability': results['predictions']['probability'],
+        'resolved': False
     }
     # {
     #     "id": "",
