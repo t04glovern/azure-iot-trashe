@@ -34,6 +34,12 @@ Making use of Azure IoT Edge we're able to leverage our trash detection model to
 * [12 - CosmosDB Webapp](instructions/12_cosmos_db_webapp.md)
 * [13 - Queue Processing Revisited](instructions/13_queue_processing_revisited.md)
 
+## Web
+
+---
+
+![Trasheboard](designs/trasheboard-example.png)
+
 ## Attribution
 
 ---
