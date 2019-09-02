@@ -1,11 +1,12 @@
 extends layout
 block content
-  h1 List of Violations
+  br
+  div.p Possible Recyclable goods put in Trashè
+    image(src='/img/bin.png' style='max-height: 50px;')
   br
   form(action="/resolvetrashe", method="post")
     table.table.table-striped.table-bordered
       tr
-        td id
         td Category
         td Probability
         td Date
@@ -16,9 +17,13 @@ block content
       else
         each item in trashe
           tr
-            td #{item.id}
             td #{item.prediction}
-            td #{item.probability}
+            if(item.probability > 0.65)
+              td.table-warning #{item.probability}
+            else if(item.probability > 0.60 && item.probability < 0.65)
+              td.table-info #{item.probability}
+            else
+              td #{item.probability}
             - var date  = new Date(item.timestamp);
             - var day   = date.getDate();
             - var month = date.getMonth() + 1;
@@ -32,5 +37,7 @@ block content
                 input(type="checkbox", name="#{item.id}", value="#{!item.resolved}", checked=item.resolved)
               else
                 input(type="checkbox", name="#{item.id}", value="#{!item.resolved}", checked=item.resolved)
-    button.btn.btn-primary(type="submit") Update items
+    i Once Resolved, update the status to resolved
+    hr
+    button.btn.btn-dark(type="submit") Update items
   hr
