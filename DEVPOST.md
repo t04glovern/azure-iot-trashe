@@ -1,6 +1,6 @@
 # Trashè
 
-Trashè is a SmartBin which aim to help you get better at recycling. Making use of Azure Cognitive Services to create a deep learning model to detect plastic, glass and metal recyclables in real time, using Azure IOT Edge to perform inference and transport predictions to other Azure Services.
+Trashè is a SmartBin which aim to help you get better at recycling. Making use of Azure Cognitive Services to create a deep learning model to detect plastic, glass and metal recyclables in real time, using Azure IoT Edge to perform inference and transport predictions to other Azure Services.
 
 ## Inspiration
 
@@ -11,12 +11,30 @@ TODO
 ## How we built it
 
 ---
-The architectural block diagram is available here.
-![Architecture Diagram](designs/trashe-azure-architecture.png)
+
+### Software Architecture
+
 At a high level this diagram can be broken into three distinct sections
-1. Building a multiclass predictor using [customvision.ai](www.customvision.ai), one of Microsofts Cognitive Services.
-2. Using Azures IOT suite to do edge inference on live images provided by a camera connected to a Raspberry Pi
-3. Creating a nodejs backend, using azure functions to write data from the IOT Hub into a CosmoDB instance.
+
+#### Custom Vision & Model
+
+Building a multiclass predictor using [customvision.ai](www.customvision.ai), one of Microsofts Cognitive Services.
+
+![Architecture Model](designs/trashe-azure-architecture-model.png)
+
+#### IoT Edge
+
+Using Azures IoT suite to do edge inference on live images provided by a camera connected to a Raspberry Pi
+
+![Architecture IoT](designs/trashe-azure-architecture-iot.png)
+
+#### Web Frontend
+
+Creating a nodejs backend, using azure functions to write data from the IoT Hub into a CosmoDB instance.
+
+![Architecture Web App](designs/trashe-azure-architecture-web-app.png)
+
+### Hardware Architecture
 
 Our initial hardware design for this project is to attach the Raspberry Pi, Camera and light to a bin, to do inference on a bins content to see what is recyclable and what isn't.
 
@@ -30,7 +48,7 @@ There were a number of challenges that we ran into during the design and executi
 
 ### Gathering the Dataset
 
-A key part of our design was to incorporate a custom Machine Learning model that could classify different kinds of trash. 
+A key part of our design was to incorporate a custom Machine Learning model that could classify different kinds of trash.
 While we could have gone the time consuming route of collecting our own images / scraping the internet for images and building our own dataset, we decided to repurpose two existing MIT licened datasets:
 
 * [garythung/trashnet](https://github.com/garythung/trashnet)
@@ -42,19 +60,18 @@ We classified all our images by hand using the drop and drag interface on [https
 After doing the labeling, customvision.ai made it easy to train our model, automatically doing the model selection, test/train split and model training processes. The output of this was a set of predictions and a docker container targeted towards our desired architecture (ARM for a Raspberry Pi).
 
 ![CustomVision Prediction Results](designs/custom-ai-prediction-01.jpg)
+
 Based on our results, the outcomes seem perfectly reasonable for the current use-case, especially for a proof of concept of "is this actually possible", and gives us a baseline to move forward from.
 
 ### Model Deployment
-We'd set ourselves a bit of a challenge: for the actual creation of everything IOT related we would try to do as much service creation and deployment as code, trying to keep our steps repeatable. **** MORE CONTENT, TLDR: Platform as code, try to avoid as much manual work, how we used IOT hub and private container repo to do deployment and how we can push updates*****
 
+We'd set ourselves a bit of a challenge: for the actual creation of everything IoT related we would try to do as much service creation and deployment as code, trying to keep our steps repeatable. **** MORE CONTENT, TLDR: Platform as code, try to avoid as much manual work, how we used IoT hub and private container repo to do deployment and how we can push updates*****
 
 ### Dark Bin
+
 Surprisingly with all of the technical challenges, one of the problems we encounted was actually simplistic. Our model did not perform well when we attempted it in real life because the lighting of the bin was insufficent to get a clear image. We wanted to avoid manual interaction so a simple lighting system was cobbled together using a small [USB LED light](https://www.altronics.com.au/p/d0385-dimmable-usb-gooseneck-led-light/) we had laying around.
 
 ![Lighting Example](designs/trashe-light-example.gif)
-
-
-
 
 ## Accomplishments that we're proud of
 
@@ -86,10 +103,9 @@ Another thing we're really proud of is the level of details put into the guide w
 
 ---
 
-This was the first time using Azure and it was great to expereience some of the details in using the platform. 
+This was the first time using Azure and it was great to expereience some of the details in using the platform.
 
 We particuarly found it surprisingly easy to create a containerised machine learning model using the Azure Cognitive Vision service. Not having to worry about manually deciding a neural network architecture (or reading papers on architectures that are well suited to our specific task) allowed us to remove distractions and focus on how to get to our goal of an end to end system faster.
-
 
 ### Azure Resource Manager
 
@@ -103,7 +119,7 @@ It was fantastic to be able to setup the Raspberry Pi on the bin with IoT Edge a
 
 ## What's next for Trashè
 
-The big next technical step for a proper production system is to investigate how to use gathered predictions to further improve the vision model and how to automatically train the model using new data and push to the IOT device if our desired metric has increased.
+The big next technical step for a proper production system is to investigate how to use gathered predictions to further improve the vision model and how to automatically train the model using new data and push to the IoT device if our desired metric has increased.
 
 We would like to increase the number of labels and dataset that we use to do a better job of detecting things that people constantly get wrong when recycling. Eg plastic bags often aren't accepted as recycling, bottles need to have their lids taken off.
 
@@ -112,6 +128,7 @@ It would also be useful to have Trashè be more of standalone unit. We see it be
 For consumers we would like to work on making the feedback loop of educating users on what's recyclable and what isn't significantly better.
 
 ---
+
 ### Further Training Model
 
 As mention above, the model currently has a reasonable accuracy that works fine for this proof of concept, however incorporating more and more annotated data would only further better the product.
