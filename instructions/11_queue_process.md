@@ -59,7 +59,7 @@ az servicebus namespace authorization-rule keys list \
     --output tsv
 ```
 
-Editthe file called `local.settings.json` with the following settings
+Edit the file called `local.settings.json` with the following settings
 
 ```json
 {
