@@ -113,7 +113,11 @@ class CameraCapture(object):
                 print("Response from external processing service: (" + str(response.status_code) + ") " + json.dumps(response.json()))
             except Exception:
                 print("Response from external processing service (status code): " + str(response.status_code))
-        return json.dumps(response.json())
+        try:
+            return json.dumps(response.json())
+        except Exception as e:
+            print('__sendFrameForProcessing Exception -' + str(e))
+            return "[]"
 
     def __displayTimeDifferenceInMs(self, endTime, startTime):
         return str(int((endTime-startTime) * 1000)) + " ms"
