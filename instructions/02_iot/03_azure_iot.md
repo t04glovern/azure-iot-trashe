@@ -26,8 +26,8 @@ az extension add --name azure-cli-iot-ext
 
 ## IoT Hub Deploy
 
-**NOTE**: Some values used are hardcoded into `templates/azure-iot-hub/parameters.json`. At a minimum you should be modifying ```name``` to change the name of your IOT hub as this name needs to be unique.
-You can also use azure IOT Hub command ```az iot hub create --name $hubName --resource-group {Your resource group name} --sku "S1" --location {Azure location}```
+**NOTE**: Some values used are hardcoded into `templates/azure-iot-hub/parameters.json`. At a minimum you should be modifying `name` to change the name of your IOT hub as this name needs to be unique.
+You can also use azure IOT Hub command `az iot hub create --name $hubName --resource-group {Your resource group name} --sku "S1" --location {Azure location}`
 
 
 ```bash
@@ -83,7 +83,7 @@ provisioning:
   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
 ```
 
-If you're doing this for multiple devices, you could consider using the [IOT Device Provisioning Service](https://docs.microsoft.com/en-us/azure/iot-dps/quick-setup-auto-provision-cli) 
+If you're doing this for multiple devices, you could consider using the [IOT Device Provisioning Service](https://docs.microsoft.com/en-us/azure/iot-dps/quick-setup-auto-provision-cli)
 
 Restart the edgeiot service
 

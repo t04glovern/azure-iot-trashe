@@ -4,7 +4,7 @@ In this section we re-visit the Queue processing Azure Function and integrate Co
 
 ## Code
 
-Update the [functions/queue-processor/ServiceBusQueueTrigger/__init__.py](../functions/queue-processor/ServiceBusQueueTrigger/__init__.py) file with the following code
+Update the [functions/queue-processor/ServiceBusQueueTrigger/__init__.py](../../functions/queue-processor/ServiceBusQueueTrigger/__init__.py) file with the following code
 
 ```python
 import azure.functions as func

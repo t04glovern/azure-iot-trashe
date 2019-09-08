@@ -1,7 +1,9 @@
 # Container Registry Create
+
 Create a custom docker repository (Azure Container Manager) to securely hold your docker image and make it available via Azure. You can do this in two ways
-1. ```az acr create --resource-group YOUR_RESOURCE_GROUP_NAME --name YOUR_REPOSITORY_NAME --sku "Standard"```
-2. Through the Azure Resource Manager (ARM) template in templates/container-registry. You will need to change ```registryName ``` and ```registryLocation``` in ```parameters.json```
+
+1. `az acr create --resource-group YOUR_RESOURCE_GROUP_NAME --name YOUR_REPOSITORY_NAME --sku "Standard"`
+2. Through the Azure Resource Manager (ARM) template in templates/container-registry. You will need to change `registryName` and `registryLocation` in `parameters.json`
 
 ```bash
 cd templates/container-registry
@@ -30,12 +32,13 @@ Login to your docker registry with the name that you used. You can see more Azur
 az acr login --name "glover"
 ```
 
-Upload the image classifier that you created in step 1, ```modules/image-classifier/``` into your docker registry, replacing ```glover``` with the name of the registry you created.
-You should also change `````` in ```modules/image-classifier/module.json``` to the name of your container registry.
-```docker build  --rm -f ./modules/image-classifier/Dockerfile.arm32v7 -t glover.azurecr.io/image-classifier:0.0.1-arm32v7 ./modules/image-classifier && docker push glover.azurecr.io/image-classifier:0.0.1-arm32v7
+Upload the image classifier that you created in step 1, `modules/image-classifier/` into your docker registry, replacing `glover` with the name of the registry you created.
+
+```bash
+docker build  --rm -f ./modules/image-classifier/Dockerfile.arm32v7 -t glover.azurecr.io/image-classifier:0.0.1-arm32v7 ./modules/image-classifier && docker push glover.azurecr.io/image-classifier:0.0.1-arm32v7
 ```
 
-You can list docker images in your docker repository with ```az acr repository list -n  {The name of your repository}```.
+You can list docker images in your docker repository with `az acr repository list -n  {The name of your repository}`.
 
 ## Delete
 
