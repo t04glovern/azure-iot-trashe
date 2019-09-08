@@ -1,12 +1,6 @@
-# Trashè
+# Trashé
 
-Trashè is a SmartBin which aim to help you get better at recycling. Making use of Azure Cognitive Services to create a deep learning model to detect plastic, glass and metal recyclables in real time, using Azure IoT Edge to perform inference and transport predictions to other Azure Services.
-
-## Inspiration
-
----
-
-TODO
+Trashé is a SmartBin which aim to help you get better at recycling. Making use of Azure Cognitive Services to create a deep learning model to detect plastic, glass and metal recyclables in real time, using Azure IoT Edge to perform inference and transport predictions to other Azure Services.
 
 ## How we built it
 
