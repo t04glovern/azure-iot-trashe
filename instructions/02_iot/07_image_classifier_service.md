@@ -4,7 +4,7 @@ Similar to the Camera Capture module we will now deploy a Image Classifier modul
 
 ## Build & Push Container
 
-Update the code in [modules/image-classifier/module.json](../modules/image-classifier/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
+Update the code in [modules/image-classifier/module.json](../../modules/image-classifier/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
 
 Alternatively run the following substituting in the correct information
 

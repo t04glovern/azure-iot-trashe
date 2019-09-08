@@ -65,7 +65,7 @@ Based on our results, the outcomes seem perfectly reasonable for the current use
 
 ### Model Deployment
 
-We'd set ourselves a bit of a challenge: for the actual creation of everything IoT related we would try to do as much service creation and deployment as code, trying to keep our steps repeatable. **** MORE CONTENT, TLDR: Platform as code, try to avoid as much manual work, how we used IoT hub and private container repo to do deployment and how we can push updates*****
+We'd set ourselves a bit of a challenge: for the actual creation of everything IoT related we would try to do as much service creation and deployment as code, trying to keep our steps repeatable.
 
 ### Dark Bin
 
@@ -80,32 +80,36 @@ Surprisingly with all of the technical challenges, one of the problems we encoun
 ### End to End Solution
 
 Initially we only planned to work on a Vision model, however as we progressed we became more ambitious and eventually built out the end-to-end solution we're submitting now.
-
+We feel there was a lot more to learn in building a pipeline that included model creation, deploying the model on the edge and building a web application than just building a web application to consume an external API.
 ### Open Sourced Guide
 
 Another thing we're really proud of is the level of details put into the guide written as we built out this system. Not only should all steps be automated, but they give a good understanding of the decisions made during the development of Trashè.
 
-* [01 - Raspberry Pi Installation](instructions/01_raspberry_pi.md)
-* [02 - Azure IoT Edge Software Pre-requisites](instructions/02_azure_iot_edge.md)
-* [03 - Azure IoT Hub / Device Setup](instructions/03_azure_iot.md)
-* [04 - Azure Container Registry Creation](instructions/04_container_registry.md)
-* [05 - Blinker Module Deploy](instructions/05_blinker.md)
-* [06 - USB Camera Setup](instructions/06_usb_camera.md)
-* [07 - Camera Capture Module Deploy](instructions/07_camera_capture.md)
-* [08 - Image Classifier Service](instructions/08_image_classifier_service.md)
-* [09 - Custom Vision Model](instructions/09_custom_vision_model.md)
-* [10 - Service Bus / Queue Setup](instructions/10_service_bus.md)
-* [11 - Queue Processing w/ Azure Function](instructions/11_queue_process.md)
-* [12 - CosmosDB Webapp](instructions/12_cosmos_db_webapp.md)
-* [13 - Queue Processing Revisited](instructions/13_queue_processing_revisited.md)
+* [01_custom_vision](instructions/01_custom_vision/readme.md)
+    - [01_custom_vision_model](instructions/01_custom_vision/01_custom_vision_model.md)
+    - [02_container_registry](instructions/01_custom_vision/02_container_registry.md)
+* [02_iot](instructions/02_iot/readme.md)
+    - [01_raspberry_pi](instructions/02_iot/01_raspberry_pi.md)
+    - [02_azure_iot_edge](instructions/02_iot/02_azure_iot_edge.md)
+    - [03_azure_iot](instructions/02_iot/03_azure_iot.md)
+    - [04_blinker](instructions/02_iot/04_blinker.md)
+    - [05_usb_camera](instructions/02_iot/05_usb_camera.md)
+    - [06_camera_capture](instructions/02_iot/06_camera_capture.md)
+    - [07_image_classifier_service](instructions/02_iot/07_image_classifier_service.md)
+* [03_web](instructions/03_web/readme.md)
+    - [01_service_bus](instructions/03_web/01_service_bus.md)
+    - [02_queue_process](instructions/03_web/02_queue_process.md)
+    - [03_cosmos_db_webapp](instructions/03_web/03_cosmos_db_webapp.md)
+    - [04_queue_processing_revisited](instructions/03_web/04_queue_processing_revisited.md)
+    
 
 ## What we learned
 
 ---
 
-This was the first time using Azure and it was great to expereience some of the details in using the platform.
+This was the first time using Azure and it was great to experience some of the details in using the platform.
 
-We particuarly found it surprisingly easy to create a containerised machine learning model using the Azure Cognitive Vision service. Not having to worry about manually deciding a neural network architecture (or reading papers on architectures that are well suited to our specific task) allowed us to remove distractions and focus on how to get to our goal of an end to end system faster.
+We particularly found it surprisingly easy to create a containerised machine learning model using the Azure Cognitive Vision service. Not having to worry about manually deciding a neural network architecture (or reading papers on architectures that are well suited to our specific task) allowed us to remove distractions and focus on how to get to our goal of an end to end system faster.
 
 ### Azure Resource Manager
 
@@ -125,7 +129,6 @@ We would like to increase the number of labels and dataset that we use to do a b
 
 It would also be useful to have Trashè be more of standalone unit. We see it being useful for recycling centers to be able to get a better idea of what the composition from each truck is to get a better idea of specific areas where councils can target education programs. It could also be more useful to monitor the metrics of the kinds of materials coming in vs the materials that are actually recycled to monitor things like contamination rates for specific classes of materials.
 
-For consumers we would like to work on making the feedback loop of educating users on what's recyclable and what isn't significantly better.
 
 ---
 
