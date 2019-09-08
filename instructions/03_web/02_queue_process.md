@@ -31,7 +31,7 @@ func new
 
 ### Update Variables
 
-Open [functions/queue-processor/ServiceBusQueueTrigger/function.json](../functions/queue-processor/ServiceBusQueueTrigger/function.json) and update the settings with your queue details.
+Open [functions/queue-processor/ServiceBusQueueTrigger/function.json](../../functions/queue-processor/ServiceBusQueueTrigger/function.json) and update the settings with your queue details.
 
 ```json
 {

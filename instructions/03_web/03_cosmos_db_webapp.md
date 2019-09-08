@@ -6,7 +6,7 @@
 cd templates/cosmos-db
 ./deploy.sh
 
-# Your subscription ID can be looked up with the CLI using: az account show --out json
+# Your subscription ID can be looked up with the CLI using: az account show --query id
 # Enter your subscription ID:
 XXXXXXX-XXXXXXXXXX-XXXXXXXXXXXX-XXXXXXXXXX
 

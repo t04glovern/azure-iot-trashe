@@ -1,8 +1,8 @@
 # Blinker Module Deploy
 
-Update the code in [modules/blinker/module.json](../modules/blinker/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
+Update the code in [modules/blinker/module.json](../../modules/blinker/module.json) to the correct registry. Then to deploy, either install the [Azure IoT Edge extension](https://github.com/microsoft/vscode-azure-iot-edge) then right click `module.json` and run Build and Push.
 
-![Push Edge 1](img/azure-edge-push-01.png)
+![Push Edge 1](../01_custom_vision/img/azure-edge-push-01.png)
 
 Alternatively run the following substituting in the correct information
 
@@ -42,4 +42,4 @@ Once pushed to ACR, you can update the deployment to the Raspberry Pi. This is a
 }
 ```
 
-![Push Edge 2](img/azure-edge-push-02.png)
+![Push Edge 2](../01_custom_vision/img/azure-edge-push-02.png)
