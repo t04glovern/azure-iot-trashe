@@ -1,8 +1,8 @@
-# Trashè
+# Trashé
 
 ![Trashe](designs/banner.png)
 
-Trashè is a SmartBin which aim to help you get better at recycling.
+Trashé is a SmartBin which aim to help you get better at recycling.
 
 Making use of Azure IoT Edge we're able to leverage our trash detection model to detect plastic, glass & metals in realtime.
 
